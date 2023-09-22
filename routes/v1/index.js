@@ -2,10 +2,11 @@ const express = require("express");
 const {
     DataController
 } = require("../../controllers/index");
+const { validateRecord } = require("../../middleware/schemaValidation");
 
 const router = express.Router();
 
-router.post("/add", DataController.addRecord);
+router.post("/add", validateRecord, DataController.addRecord);
 router.delete("/delete/:name/:dpt", DataController.deleteRecord);
 router.get("/allStat", DataController.getAllSS);
 router.get("/allStatOnContract", DataController.getAllSSonContract);
