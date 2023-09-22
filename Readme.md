@@ -32,7 +32,7 @@ The service should now be running on http://localhost:5000.
     Endpoint: `POST /api/v1/add`
     ### Example:
      URL: `http://localhost:5000/api/v1/add`
-     Input body should contain : name,salary,currency(optional),department,on_contract(optional),sub_department
+     Input body should contain : name , salary , currency(optional) , department , on_contract(optional) , sub_department
      ```
         {
             "name": "Abhishek",
