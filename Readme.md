@@ -172,3 +172,55 @@ The service should now be running on http://localhost:5000.
         }
     }
     ```
+7.  Create user
+    Endpoint: `POST /api/v1/createUser`
+    URL: `http://localhost:5000/api/v1/createUser`
+    Input body should contain : email , password
+    ```
+    {
+        "email": "abcd@gmail.com",
+        "password": "123456",
+    }
+    ```
+    In Response it will give :
+    ```
+    {
+        "message": "User added successfully",
+        "success": true,
+        "err": {},
+        "data": [
+            {
+                "email": "abcd@gmail.com",
+                "password": "$2b$10$/l5b.NG/IYkUT2kHCYFxpOAyvY3tth2TXP0L0niKSWVeSYRwKa04O"
+            }
+        ]
+    }
+    
+    ```
+8. Sign in User
+     Endpoint: `POST /api/v1/signin`
+     URL: `http://localhost:5000/api/v1/signin`
+     Input body should contain : email , password
+    ```
+    {
+        "email": "abcd@gmail.com",
+        "password": "123456",
+    }
+    ```
+    In Response it will give :
+    ```
+    {
+        "message": "User logged in successfully",
+        "success": true,
+        "err": {},
+        "data": [
+            {
+                "email": "abcd@gmail.com",
+                "password": "$2b$10$/l5b.NG/IYkUT2kHCYFxpOAyvY3tth2TXP0L0niKSWVeSYRwKa04O"
+            }
+        ],
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY2RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkL2w1Yi5ORy9JWWtVVDJrSENZRnhwT0F5dlkzdHRoMlRYUDBMMG5pS1NXVmVTWVJ3S2EwNE8iLCJpYXQiOjE2OTU0MDQ2OTUsImV4cCI6MTY5NTQxMTg5NX0.2rCoNfeGLO_Ul0lC6IbTF8xeu_v-uUTfHem8Kh_InXg"
+    }
+    ```
+
+## Note: The API is from 1 to 6 should have Bearer token (after sign in)
