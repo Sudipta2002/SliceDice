@@ -1,3 +1,5 @@
+![PW Image](https://du8ef2qvb6oy7.cloudfront.net/media/images/40210ee0-ecba-4e9a-bdba-d5ed3a18d080/Physicswallahlogo2x.png?fm=jpg&q=80&fit=max&crop=1000%2C1000%2C0%2C0&w=1000)
+
 # Micro-Service for Summary Statistics
 
 This micro-service provides functionality to derive simplified summary statistics (mean, min, max) on a dataset. It includes various API endpoints for adding records, fetching summary statistics, authentication, and authorization.
