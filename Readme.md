@@ -17,7 +17,7 @@ These instructions will help you set up and run the service on your local machin
 
    ```
    git clone <repository-url>
-   cd <repository-directory>```
+   cd <repository-directory>
 
 
 2. Install dependencies:
