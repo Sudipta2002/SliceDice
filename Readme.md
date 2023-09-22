@@ -238,3 +238,4 @@ The service should now be running on http://localhost:5000.
     ```
 
 ## Note: The API's from 1 to 6 should have Bearer token (after sign in)
+## Please add .env file and initialize JWT_SECRET environment
