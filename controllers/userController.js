@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { JWT_KEY } = require('../config/config');
 let user = [];
 
 const matchPassword = (userPassword, enteredPassword) => {
@@ -8,7 +9,7 @@ const matchPassword = (userPassword, enteredPassword) => {
 }
 const createToken = (user) => {
     try {
-        const result = jwt.sign(user, 'sudipta', { expiresIn: '2h' })
+        const result = jwt.sign(user, JWT_KEY, { expiresIn: '2h' })
         return result;
     } catch (error) {
         console.log("Something went wrong on token creation in controller layer");
@@ -17,7 +18,7 @@ const createToken = (user) => {
 }
 const verifyToken = (token) => {
     try {
-        const response = jwt.verify(token, 'sudipta')
+        const response = jwt.verify(token, JWT_KEY)
         return response;
     } catch (error) {
         res.status(401).json({
@@ -154,4 +155,5 @@ const isAuthenticated = async(req, res, next) => {
     }
 };
 
+module.exports = { create, signIn, isAuthenticated };
 module.exports = { create, signIn, isAuthenticated };
