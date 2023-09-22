@@ -42,14 +42,18 @@ The service should now be running on http://localhost:5000.
             "sub_department": "Platform"
         }
      ```
-2. Delete a New Record
+2. Delete a New Record:
     Endpoint: `DELETE /api/v1/delete`
+     ### Example:
      URL: `http://localhost:5000/api/v1/delete/Abhishek/Engineering`
+
      In the params I am taking the name and department as the criteria for deletion
 
 
-3. Fetch Summary Statistics for Salary (Entire Dataset)
+3. Fetch Summary Statistics for Salary (Entire Dataset):
+
     Endpoint: `GET /api/v1/allStat`
+     ### Example:
     URL: `http://localhost:5000/api/v1/allStat`
     As a response we will get 
     ```
@@ -64,8 +68,10 @@ The service should now be running on http://localhost:5000.
         }
     }
     ```
-4.  Fetch Summary Statistics for Salary (On Contract)
+4.  Fetch Summary Statistics for Salary (On Contract):
+
     Endpoint: `GET /api/v1/allStatOnContract`
+     ### Example:
     URL: `http://localhost:5000/api/v1/allStatOnContract`
     As a response we will get 
     ```
@@ -80,8 +86,10 @@ The service should now be running on http://localhost:5000.
         }
     }
     ```
-5. Fetch Summary Statistics for Salary (By Department)
+5. Fetch Summary Statistics for Salary (By Department):
+
     Endpoint: `GET /api/v1/allStatOnDept`
+    ### Example:
     URL: `http://localhost:5000/api/v1/allStatOnDept`
     ```
     {
@@ -112,8 +120,10 @@ The service should now be running on http://localhost:5000.
         }
     }
     ```
-6.  Fetch Summary Statistics for Salary (By Department and Sub-Department)
+6.  Fetch Summary Statistics for Salary (By Department and Sub-Department):
+
     Endpoint: `GET /api/v1/allStatOnDeptSubdept`
+    ### Example:
     URL: `http://localhost:5000/api/v1/allStatOnDeptSubdept`
     ```
     {
@@ -172,10 +182,12 @@ The service should now be running on http://localhost:5000.
         }
     }
     ```
-7.  Create user
+7.  Create user:
+
     Endpoint: `POST /api/v1/createUser`
+    ### Example:
     URL: `http://localhost:5000/api/v1/createUser`
-    Input body should contain : email , password
+    Input body should contain : email , password 
     ```
     {
         "email": "abcd@gmail.com",
@@ -197,8 +209,10 @@ The service should now be running on http://localhost:5000.
     }
     
     ```
-8. Sign in User
+8. Sign in User:
+
      Endpoint: `POST /api/v1/signin`
+    ### Example:
      URL: `http://localhost:5000/api/v1/signin`
      Input body should contain : email , password
     ```
@@ -223,4 +237,4 @@ The service should now be running on http://localhost:5000.
     }
     ```
 
-## Note: The API is from 1 to 6 should have Bearer token (after sign in)
+## Note: The API's from 1 to 6 should have Bearer token (after sign in)
