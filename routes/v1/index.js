@@ -1,15 +1,23 @@
 const express = require("express");
 const {
-    DataController
+    DataController,
+    UserController
 } = require("../../controllers/index");
 const { validateRecord } = require("../../middleware/schemaValidation");
+const { isAuthenticated } = require("../../controllers/userController");
 
 const router = express.Router();
 
-router.post("/add", validateRecord, DataController.addRecord);
-router.delete("/delete/:name/:dpt", DataController.deleteRecord);
-router.get("/allStat", DataController.getAllSS);
-router.get("/allStatOnContract", DataController.getAllSSonContract);
-router.get("/allStatOnDept", DataController.getAllStatonDept)
-router.get("/allStatOnDeptSubdept", DataController.getAllStatonDeptSubDept)
+//Stats
+router.post("/add", validateRecord, isAuthenticated, DataController.addRecord);
+router.delete("/delete/:name/:dpt", isAuthenticated, DataController.deleteRecord);
+router.get("/allStat", isAuthenticated, DataController.getAllSS);
+router.get("/allStatOnContract", isAuthenticated, DataController.getAllSSonContract);
+router.get("/allStatOnDept", isAuthenticated, DataController.getAllStatonDept)
+router.get("/allStatOnDeptSubdept", isAuthenticated, DataController.getAllStatonDeptSubDept)
+
+// User
+router.post('/createUser', UserController.create);
+router.post('/signin', UserController.signIn);
+router.post('/auth', UserController.isAuthenticated);
 module.exports = router;
