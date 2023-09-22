@@ -30,8 +30,12 @@ const create = asyncHandler(async(req, res) => {
         const newUser = req.body;
         const foundUser = user.find(u => u.email === req.body.email);
         if (foundUser) {
-            res.status(400);
-            throw new Error("User already Exists");
+            return res.status(400).json({
+                message: "User already exists",
+                success: false,
+                err: {},
+                data: {}
+            });
         }
         const salt = await bcrypt.genSalt(10);
         newUser.password = await bcrypt.hash(req.body.password, salt);
@@ -55,28 +59,53 @@ const signIn = asyncHandler(async(req, res) => {
     try {
         const credentials = req.body;
         const foundUser = user.find(u => u.email === credentials.email);
-        // user.push(newUser);
-        if (foundUser) {
-            const index = user.findIndex(u => u.email === credentials.email);
-
-            if (!matchPassword(user[index].password, credentials.password)) {
-                res.status(401);
-                throw new Error("Invalid  or Password");
-            } else {
-                const newToken = createToken(credentials);
-                // return newToken;
-                res.status(201).json({
-                    message: 'User logged in successfully',
-                    success: true,
-                    err: {},
-                    data: user,
-                    token: newToken
-                });
-            }
-        } else {
-            res.status(401);
-            throw new Error("Invalid Email or Password");
+        if (!foundUser) {
+            return res.status(401).json({
+                message: "Invalid Email or Password",
+                success: false,
+                err: {},
+                data: {}
+            });
         }
+        const index = user.findIndex(u => u.email === credentials.email);
+        if (!matchPassword(user[index].password, credentials.password)) {
+            return res.status(401).json({
+                message: "Invalid Email or Password",
+                success: false,
+                err: {},
+                data: {}
+            });
+        }
+        const newToken = createToken(foundUser);
+
+        res.status(201).json({
+            message: 'User logged in successfully',
+            success: true,
+            err: {},
+            data: user,
+            token: newToken
+        });
+        // if (foundUser) {
+        //     const index = user.findIndex(u => u.email === credentials.email);
+
+        //     if (!matchPassword(user[index].password, credentials.password)) {
+        //         res.status(401);
+        //         throw new Error("Invalid  or Password");
+        //     } else {
+        //         const newToken = createToken(credentials);
+        //         // return newToken;
+        //         res.status(201).json({
+        //             message: 'User logged in successfully',
+        //             success: true,
+        //             err: {},
+        //             data: user,
+        //             token: newToken
+        //         });
+        //     }
+        // } else {
+        //     res.status(401);
+        //     throw new Error("Invalid Email or Password");
+        // }
 
     } catch (error) {
         return res.status(500).json({
@@ -102,10 +131,15 @@ const isAuthenticated = async(req, res, next) => {
                 });
             }
             // console.log("fsfsfsffs");
-            // const index = user.findIndex(u => u.email === isTokenVerified.email);
-            // if (index < 0) {
-            //     throw { error: "No user exist corresponding token exist" };
-            // }
+            const index = user.findIndex(u => u.email === isTokenVerified.email);
+            if (index < 0) {
+                return res.status(401).json({
+                    message: "User doesnt exist",
+                    success: false,
+                    err: {},
+                    data: {}
+                });
+            }
 
             next();
         } catch (error) {
