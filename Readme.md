@@ -16,9 +16,8 @@ These instructions will help you set up and run the service on your local machin
 1. Clone the repository:
 
    ```
-   git clone <repository-url>
-   cd <repository-directory>
-
+   git clone https://github.com/Sudipta2002/SliceDice.git
+   cd SliceDice
 
 2. Install dependencies:
     ```npm install```
