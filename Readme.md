@@ -1,5 +1,6 @@
 
 <img src="https://du8ef2qvb6oy7.cloudfront.net/media/images/40210ee0-ecba-4e9a-bdba-d5ed3a18d080/Physicswallahlogo2x.png?fm=jpg&q=80&fit=max&crop=1000%2C1000%2C0%2C0&w=1000)" alt="PW Image" width="200" height="200">
+![Document1 - Word 18-11-2023 12_37_56](https://github.com/Sudipta2002/SliceDice/assets/78099311/c7475197-fa55-41eb-9987-ee2d449287cd)
 
 
 # Micro-Service for Summary Statistics
